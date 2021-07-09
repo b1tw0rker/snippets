@@ -43,7 +43,7 @@ exit 0
 ```
 
 
-### cd ins vorherige verzeichnis
+### cd to previous folder
 
 ```bash
 cd -
