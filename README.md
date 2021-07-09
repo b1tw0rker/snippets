@@ -1,4 +1,4 @@
-# linux snippets
+# Linux Snippets
 
 ### drop all MySQL databases
 
