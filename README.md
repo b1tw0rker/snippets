@@ -43,6 +43,15 @@ exit 0
 ```
 
 
+### cd ins vorherige verzeichnis
+
+```bash
+cd -
+```
+
+
+
+
 
 
 
