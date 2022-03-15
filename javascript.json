@@ -1,0 +1,324 @@
+{
+
+    "bw-initial": {
+        "prefix": [
+            "bw-!",
+        ],
+        "body": [
+            "$(function () {",
+            "\t$0",
+            "});",
+        ],
+        "description": "BW Set Bootstrap Placeholder Suche to german"
+    },
+
+
+    "BW-Ajax": {
+        "prefix": [
+            "bw-ajax",
+        ],
+        "body": [
+            "$('#${1:Btn}').on('click', function (e) {",
+            "      e.preventDefault();",
+            "      var btn = $(this).attr('id');",
+            "      $.ajax({",
+            "               url: 'ajax/${2:file}.ajax.php',",
+            "               data: $('#${3:form}').serialize(),",
+            "               type: 'POST',",
+            "               beforeSend: function (xhr) {",
+            "               if (code.length < 1) {",
+            "                   xhr.abort();",
+            "               }",
+            "               $('#' + btn).html('<i class=\"fal fa-spinner-third fa-spin\"></i> Proceeding');",
+            "               $('#' + btn).attr('disabled', true);",
+            "           },",
+            "           success: function (data) {",
+            "               var response = JSON.parse(data);",
+            "               console.log(data);",
+            "               $('#' + btn).html('<i class=\"fal fa-save\"></i> Gespeichert!');",
+            "               $('#' + btn).attr('disabled', false);",
+            "           },",
+            "       });",
+            "});"
+        ],
+        "description": "BW Ajax block on click event"
+    },
+
+
+    "bw-Tooltipp": {
+        "prefix": [
+            "bw-tooltip",
+        ],
+        "body": [
+            "/**",
+             "*",
+             "*  Tooltipp",
+             "*",
+             "*/",
+            "$('[data-bs-toggle=\"tooltip\"]').tooltip({});"
+        ],
+        "description": "BW Tooltipp"
+    },
+
+
+    "getScript": {
+        "prefix": [
+            "bw-getscript",
+        ],
+        "body": [
+            "$.getScript(\"./assets/js/${1:file}.js\");"
+        ],
+        "description": "BW getScript"
+    },
+
+
+    "each": {
+        "prefix": [
+            "bw-each",
+        ],
+        "body": [
+            "$.each(${1:array}, function (key, value) {",
+            "\t$0",
+            "});"
+        ],
+        "description": "BW iterate each loop"
+    },
+
+
+    "on-click": {
+        "prefix": [
+            "bw-on-click",
+        ],
+        "body": [
+            "$('#${1:Btn}').on('click', function (e) {",
+            "     e.preventDefault();",
+            "\t$0",
+            "});"
+        ],
+        "description": "BW on click"
+    },
+
+
+    "on-click-body": {
+        "prefix": [
+            "bw-on-click-body",
+        ],
+        "body": [
+            "$('body').on('click', '#${1:Btn}', function (e) {",
+            "     e.preventDefault();",
+            "\t$0",
+            "});"
+        ],
+        "description": "BW on click, use for dynamic content"
+    },
+
+
+
+    "get-JSON": {
+        "prefix": [
+            "bw-get-json",
+        ],
+        "body": [
+            "var ts = new Date().getTime();",
+            "$.getJSON('/assets/json/${1:file}.json?=' + ts, function (data) {",
+            "   const markup = data.map((item) => {",
+            "   //item.key, item.value",
+            "\t$0",
+            "   });",
+            "});",
+        ],
+        "description": "BW getJSON"
+    },
+
+
+
+
+    "validate": {
+        "prefix": [
+            "bw-validate",
+        ],
+        "body": [
+            "$('#${1:form}').validate({",
+            " rules: {",
+            "  u_name: {",
+            "   required: true,",
+            "   minlength: 4,",
+            "   maxlength: 90,",
+            "   pattern: /^[A-Za-z0-9\\ .-]+$/, // Chars and numbers",
+            "   },",
+            "  u_email: {",
+            "   required: true,",
+            "   email: true,",
+            "   minlength: 4,",
+            "   maxlength: 90,",
+            "   },",
+            "  u_telefon: {",
+            "   required: true,",
+            "   minlength: 10,",
+            "   maxlength: 12,",
+            "   pattern: /^0{1}[\\d]/, // numbers with leading zero",
+            "  },",
+            "},",
+            "   messages: {",
+            "       u_name: TXT['CREATE_SAG_DEINEN_NAMEN'],",
+            "       u_email: TXT['CREATE_VALIDATE_MAIL'],",
+            "       u_telefon: 'Gib eine Mobilnummer mit führender Null an.',",
+            "       u_prefix: 'Ländervorwahl startet mit einem + Zeichen.',",
+            "},",
+            "",
+            "   errorClass: 'invalid',",
+            "",
+            "submitHandler: function (form) {",
+            "   saveData();",
+            "},",
+        "});",
+        ],
+        "description": "BW Validate"
+    },
+
+
+
+    "validate-handler": {
+        "prefix": [
+            "bw-validate-handler",
+        ],
+        "body": [
+            "function saveData() {",
+            "   var btn = $('#${1:form}').find('button[type=submit]:focus');",
+            "   //Enter typed",
+            "   if (btn[0] === undefined) {",
+            "      var btn = $('#${2:form}').find('button[type=submit]');",
+            "   }",
+            "   btn = btn[0]['id'];",
+            "",
+            "$.ajax({",
+            "      url: 'ajax/u_account_save.ajax.php',",
+            "      data: $('#u_konto_form').serialize(),",
+            "      type: 'POST',",
+            "      beforeSend: function (xhr) {",
+            "            $('#' + btn).prop('disabled', true);",
+            "            $('#' + btn).html('<i class=\"fal fa-spinner-third fa-spin\"></i> ' + TXT['GLOBAL_PROCEED']);",
+            "    },",
+            "      success: function (data) {",
+            "            var response = JSON.parse(data);",
+            "",
+            "            if (response.done === true) {",
+            "                  $('#' + btn).prop('disabled', false);",
+            "                  $('#' + btn).html('<i class=\"fal fa-save\"></i> ' + TXT['GLOBAL_SAVED']);",
+            "        }",
+            "    },",
+            "});",
+            "}",
+        ],
+        "description": "BW validate ajax Handler"
+    },
+
+
+
+"bw-bootstrap-suche-de": {
+    "prefix": [
+        "bw-bootstrap-suche-de",
+    ],
+    "body": [
+     "/**",
+     " *",
+     " * Reset Bootstrap Table Search/Suche",
+     " *",
+     " */",
+    "$('body').find('input[type=search]').attr('placeholder', 'Suche');",
+    "",
+    ],
+    "description": "BW Set Bootstrap Placeholder Suche to german"
+},
+
+
+
+"bw-confirm": {
+    "prefix": [
+        "bw-confirm",
+    ],
+    "body": [
+    "/**",
+    " *",
+    " * confirm stuff",
+    " *",
+    " */",
+    "$('#table').on('click',\"a[id^='ac_']\", function (e) {",
+    "  e.preventDefault();",
+    "  var id = $(this).attr('data-id');",
+    "",
+    " $.confirm({",
+    "       animation: 'top',",
+    "       closeAnimation: 'top',",
+    "       theme: window.localStorage.getItem('theme'),",
+    "       title: 'Hey ',",
+    "       content: 'lorem ipsum?',",
+    "       buttons: {",
+    "             ok: function () {",
+    "                   $.ajax({",
+    "                         url: 'ajax/file.ajax.php',",
+    "                        data: {",
+    "                               id: id,",
+    "                   },",
+    "                         type: 'post',",
+    "               })",
+    "                         .done(function (response) {",
+    "                   //console.log (response);",
+    "               })",
+    "                         .fail(function () {",
+    "                               //console.log('fail');",
+    "               })",
+    "                         .always(function () {",
+    "                   //console.log('always');",
+    "               });",
+    "           },",
+    "             cancel: function () {},",
+    "       },",
+    "   });",
+    "});",
+    "",
+    ],
+    "description": "BW Set Bootstrap Placeholder Suche to german"
+},
+
+
+
+"bw-bootstrap-local-storage-tabs": {
+    "prefix": [
+        "bw-bootstrap-local-storage-tabs",
+    ],
+    "body": [
+    "/**",
+    " *",
+    " * Local Storage Bootstrap Tabs",
+    " *",
+    " */",
+    "$('a[data-toggle=\"tab\"]').on('show.bs.tab', function (e) {",
+    "      localStorage.setItem('activePushTab', $(e.target).attr('href'));",
+    "});",
+    "var activePushTab = localStorage.getItem('activePushTab');",
+    "if (activePushTab) {",
+    "      $('#PushTab a[href=\"' + activePushTab + '\"]').tab('show');",
+    "}",
+    "",
+    ],
+    "description": "BW Set Bootstrap Local Storage Tabs"
+},
+
+"bw-window-width": {
+    "prefix": [
+        "bw-window-width",
+    ],
+    "body": [
+        "$(window).resize(function() {",
+        "   var h = $(window).height();",
+        "   var w = $(window).width();",
+        "   console.log('width: ' + w + 'px height: ' + h + 'px');",
+        "});",
+        "",
+    ],
+    "description": "BW show window height and width in console"
+},
+
+
+}
