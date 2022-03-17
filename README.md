@@ -49,6 +49,13 @@ exit 0
 cd -
 ```
 
+### DEL o Byte files
+
+```bash
+find . -type f -size 0b -print    # print o byte files
+find . -type f -size 0b -delete   # del 0 byte files
+```
+
 
 
 
