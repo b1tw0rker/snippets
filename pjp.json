@@ -1,0 +1,16 @@
+{
+	"bw-row": {
+		"prefix": "",
+		"body": [
+			"  <div class=\"row\">\r",
+			"    <div class=\"col-md-8\">\r",
+			"      logo\r",
+			"    </div>\r",
+			"    <div class=\"col-md-4\">\r",
+			"      Konto iNfo\r",
+			"    </div>\r",
+			"  </div>"
+		],
+		"description": "bootstrap row"
+	}
+}
