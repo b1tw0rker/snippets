@@ -1,0 +1,12 @@
+{
+      "Print to console": {
+            "prefix": "bw-any",
+            "body": ["console.log('$1');", "$2"],
+            "description": "Log output to console"
+      },
+      "bw-mat-icon": {
+            "prefix": "bw-mat-icon",
+            "body": ["<mat-icon aria-hidden=\"false\" aria-label=\"${1:plane} icon\">${1:plane}</mat-icon>"],
+            "description": "Google Material Icon"
+      }
+}
